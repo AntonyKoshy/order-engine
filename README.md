@@ -20,6 +20,9 @@ This project focuses on **correctness, concurrency, testability, and clear trade
 
 ## High - Level Architecture
 
+Orders are never applied directly from HTTP handlers. Instead, handlers enqueueorders into a buffered channel. A single background goroutine owns all mutations to the order book, which makes reasoning about correctness straightforward.
+
+```
 Client
   │
   │  HTTP POST /order
@@ -46,8 +49,10 @@ HTTP Handler (orderBookHandler)
   │  HTTP GET /orderbook
   ▼
 Client
+```
 
 
+---
 
 ### Key Ideas
 
