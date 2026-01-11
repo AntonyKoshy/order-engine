@@ -113,6 +113,16 @@ Run tests:
 ```bash
 go test ./...
 go test -race ./...
+```
+
+## Running the Server
+
+Ensure Go is installed (Go 1.25+ recommended).
+
+From the project root:
+
+```bash
+go run main.go
 
 
 
